@@ -1,0 +1,20 @@
+{
+    "name": "root/modern-bakery",
+    "type": "project",
+    "require": {
+        "filp/whoops": "^2.1",
+        "illuminate/database": "^5.4",
+        "robmorgan/phinx": "^0.8.1"
+    },
+    "authors": [
+        {
+            "name": "Renato Soares",
+            "email": "renatosoarespro@hotmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "app/controllers/",
+            "Models\\": "app/models/" }
+    }
+}

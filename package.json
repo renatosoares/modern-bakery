@@ -1,0 +1,30 @@
+{
+  "name": "modern-bakery",
+  "version": "1.0.0",
+  "description": "Final work for the discipline of rich interfaces",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/renatosoares/modern-bakery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/renatosoares/modern-bakery/issues"
+  },
+  "homepage": "https://github.com/renatosoares/modern-bakery#readme",
+  "dependencies": {
+    "bower": "^1.8.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-scss": "^1.4.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp-sourcemaps": "2.6.0"
+  }
+}
