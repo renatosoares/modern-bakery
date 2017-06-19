@@ -16,10 +16,10 @@ environments:
 
     development:
         adapter: pgsql
-        host: 127.0.0.1
-        name: modern-bakery
-        user: practicedev
-        pass: masterkey
+        host: %%PHINX_DBHOST%%
+        name: %%PHINX_DBNAME%%
+        user: %%PHINX_DBUSER%%
+        pass: %%PHINX_DBPASS%%
         port: 5432
         charset: utf8
 
