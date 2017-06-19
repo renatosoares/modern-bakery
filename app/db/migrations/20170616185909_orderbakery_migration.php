@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class OrderMigration extends AbstractMigration
+class orderbakeryMigration extends AbstractMigration
 {
     /**
      * Change Method.
@@ -24,17 +24,19 @@ class OrderMigration extends AbstractMigration
      *
      * Remember to call "create()" or "update()" and NOT "save()" when working
      * with the Table class.
+     *
+     *
+    ->addColumn('deleted_at', 'timestamp')
      */
     public function change()
     {
-        $table = $this->table('Order');
+        $table = $this->table('orderbakery');
         $table
             ->addColumn('product', 'string')
             ->addColumn('queue', 'boolean')
             ->addColumn('available', 'boolean')
             ->addColumn('delivered', 'boolean')
-            ->addColumn('created', 'datetime')
-            ->addColumn('updated', 'datetime', array('null' => true))
+            ->addTimestamps()
             ->create();
     }
 }
