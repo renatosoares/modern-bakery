@@ -4,7 +4,8 @@
     "require": {
         "filp/whoops": "^2.1",
         "illuminate/database": "^5.4",
-        "robmorgan/phinx": "^0.8.1"
+        "robmorgan/phinx": "^0.8.1",
+        "vlucas/phpdotenv": "^2.4"
     },
     "authors": [
         {

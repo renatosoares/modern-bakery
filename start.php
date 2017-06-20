@@ -1,6 +1,6 @@
 <?php
-require 'config.php';
 require __DIR__ . '/vendor/autoload.php';
+require 'config.php';
 use Models\Database;
 use Whoops\Run as Run;
 use Whoops\Handler\PrettyPageHandler as PrettyPageHandler;

@@ -2,4 +2,4 @@
 /vendor/
 node_modules/
 assets/bower_components/
-config.php
+.env

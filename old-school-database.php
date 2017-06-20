@@ -1,8 +1,9 @@
 <?php
-$dbname = "modern-bakery";
-$host = "localhost";
-$dbuser = "practicedev";
-$dbpass = "masterkey";
+(new Dotenv\Dotenv(__DIR__))->load();
+$dbname = $_ENV['DB_DEVELOPMENT_HOST'];
+$host = $_ENV['DB_DEVELOPMENT_DATABASE'];
+$dbuser = $_ENV['DB_DEVELOPMENT_USERNAME'];
+$dbpass = $_ENV['DB_DEVELOPMENT_PASSWORD'];
 
 $dsn = "pgsql:host=$host;port=5432;dbname=$dbname;user=$dbuser;password=$dbpass";
 
