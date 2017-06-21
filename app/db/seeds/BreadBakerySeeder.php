@@ -48,6 +48,8 @@ class BreadBakerySeeder extends AbstractSeed
         foreach ($bread as $b){
             $data[] = [
               'bread' => $b,
+              'created_at' => date('Y-m-d H:i:s'),
+              'updated_at' => date('Y-m-d H:i:s'),
             ];
         }
         $this->insert('bread_bakery', $data);

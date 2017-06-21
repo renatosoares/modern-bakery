@@ -12,4 +12,8 @@ class OrderController
 //        $order = $order->fill(['product'=>$product,'queue'=>$queue,'available'=>$available, 'delivered'=>$delivered]);
         return $order;
     }
+
+    public function listQueue(){
+      return  Order::all()->toJson();
+    }
 }

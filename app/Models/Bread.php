@@ -6,4 +6,7 @@ use Illuminate\Database\Eloquent\Model as Eloquent;
 
 class Bread extends Eloquent{
     protected $table = "bread_bakery";
+    protected $fillable = ['bread'];
+//    protected $timestamp = false;
+
 }
