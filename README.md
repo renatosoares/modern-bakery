@@ -3,6 +3,8 @@ Final work for the discipline of rich interfaces
 
 ##### Run $
 
+mv .env.example .env
+
 composer install
 
 npm install

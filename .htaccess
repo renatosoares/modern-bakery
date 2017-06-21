@@ -1,0 +1,34 @@
+#Rewrite to www
+#Options +FollowSymLinks
+#RewriteEngine on
+#RewriteCond %{HTTP_HOST} ^modern-bakery.dev[nc]
+#RewriteRule ^(.*)$ http://www.modern-bakery.dev/$1 [r=301,nc]
+#FIXME configurar htaccess
+RewriteEngine on
+3405893058923459082034958023958-0
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /index.php?path=$1 [NC,L,QSA]
+
+#301 Redirect Old File
+#Redirect 301 /.env /index.html
+
+#301 Redirect Entire Directory
+#RedirectMatch 301 /app(.*) //$1
+
+#Change default directory page
+#DirectoryIndex /public/index.html
+
+#Prevent viewing of .htaccess file
+<Files .htaccess>
+order allow,deny
+deny from all
+</Files>
+
+#Prevent directory listings
+#Options All -Indexes
+
+<Files ".env">
+Order Allow,Deny
+Deny from all
+</Files>

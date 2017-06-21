@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class orderbakeryMigration extends AbstractMigration
+class OrderBakeryMigration extends AbstractMigration
 {
     /**
      * Change Method.
@@ -30,7 +30,7 @@ class orderbakeryMigration extends AbstractMigration
      */
     public function change()
     {
-        $table = $this->table('orderbakery');
+        $table = $this->table('order_bakery');
         $table
             ->addColumn('product', 'string')
             ->addColumn('queue', 'boolean')

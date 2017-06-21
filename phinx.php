@@ -23,28 +23,17 @@ return
                         'port' => 5432,
                         'charset' => 'utf8',
                         'collation' => 'utf8_unicode_ci',
-                    ]//,
-//                'staging' =>
-//                    [
-//                        'adapter' => 'mysql',
-//                        'host' => $_ENV['DB_STAGING_HOST'],
-//                        'name' => $_ENV['DB_STAGING_DATABASE'],
-//                        'user' => $_ENV['DB_STAGING_USERNAME'],
-//                        'pass' => $_ENV['DB_STAGING_PASSWORD'],
-//                        'port' => 3306,
-//                        'charset' => 'utf8',
-//                        'collation' => 'utf8_unicode_ci',
-//                    ],
-//                'production' =>
-//                    [
-//                        'adapter' => 'mysql',
-//                        'host' => $_ENV['DB_PRODUCTION_HOST'],
-//                        'name' => $_ENV['DB_PRODUCTION_DATABASE'],
-//                        'user' => $_ENV['DB_PRODUCTION_USERNAME'],
-//                        'pass' => $_ENV['DB_PRODUCTION_PASSWORD'],
-//                        'port' => 3306,
-//                        'charset' => 'utf8',
-//                        'collation' => 'utf8_unicode_ci',
-//                    ],
+                    ],
+                'production' =>
+                    [
+                        'adapter' => 'pgsql',
+                        'host' => $_ENV['DB_PRODUCTION_HOST'],
+                        'name' => $_ENV['DB_PRODUCTION_DATABASE'],
+                        'user' => $_ENV['DB_PRODUCTION_USERNAME'],
+                        'pass' => $_ENV['DB_PRODUCTION_PASSWORD'],
+                        'port' => 5432,
+                        'charset' => 'utf8',
+                        'collation' => 'utf8_unicode_ci',
+                    ],
             ],
     ];
