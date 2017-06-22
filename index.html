@@ -17,18 +17,22 @@
 </nav>
 <header class="bakery-header">
     <form method="GET">
-        <input value="Show Me the Money" type="button"
-               onClick="getNewTotals();" />
+        <input value="list bread" type="button"
+               onClick="getNewBreads();" />
+        <input value="mapeia" type="button"
+               onClick="addOnClickHandlers();" />
     </form>
 </header>
 <main class="bakery-main container-fluid">
     <div class="row">
         <div class="bread-choice col-8">
             <ul class="row" id="bread-list">
+                <!-- listagem de pães-->
             </ul>
         </div>
         <aside class="side-review col-4" >
             <ul id="select-bread-list">
+                <!--pães selecionados-->
             </ul>
         </aside>
     </div>
