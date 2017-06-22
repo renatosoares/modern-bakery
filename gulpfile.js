@@ -12,10 +12,10 @@ var files = ['assets/styles/*.scss', 'assets/scripts/*.js'];
 var inputStyles = 'assets/styles/build.scss';
 var outputStyles = 'assets/dist/css';
 
-var jsFiles = 'assets/scrips/*.js',
+var jsFiles = 'assets/scripts/*.js',
     jsDest = 'assets/dist/js';
 
-gulp.task('buildcss', function () {
+gulp.task('styles', function () {
     return gulp
         .src(inputStyles)
         .pipe(sourcemaps.init())
@@ -43,5 +43,5 @@ gulp.task('scripts', function() {
 
 //Watch task
 gulp.task('default',function() {
-    gulp.watch(files,['buildcss', 'scripts']);
+    gulp.watch(files,['styles', 'scripts']);
 });

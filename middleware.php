@@ -20,7 +20,7 @@ $breadList = new BreadController();
 switch ($_GET['actionbakery']){
     case "breadlist":
        $breadList = new BreadController();
-       $breadList->getListBread();
+       echo $breadList->getListBread();
        break;
 }
 

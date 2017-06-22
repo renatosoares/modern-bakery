@@ -3,3 +3,4 @@
 node_modules/
 assets/bower_components/
 .env
+assets/dist/
