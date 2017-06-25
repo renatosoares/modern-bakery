@@ -13,6 +13,8 @@ bower install
 
 php vendor/bin/phinx migrate -e development
 
+php vendor/bin/phinx seed:run -e development   
+
 
 #### :mortar_board:
 ##### Tecnologia em Análise e Desenvolvimento de Sistemas

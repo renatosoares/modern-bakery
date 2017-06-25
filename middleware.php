@@ -13,14 +13,20 @@ use Models\Order;
 //Bread::create(["bread"=>"integral"]);
 
 
-//dd($listOrder->listQueue()); // FIXME retornar o json para o html
+//dd($listOrder->listQueue());
 
-$breadList = new BreadController();
 
 switch ($_GET['actionbakery']){
     case "breadlist":
        $breadList = new BreadController();
        echo $breadList->getListBread();
        break;
+    case "sendqueue":
+        $breadSendValue = $_REQUEST["breadSendValue"];
+        $breadOrder = new OrderController();
+        $breadOrder->createOrder($breadSendValue, true);
+        echo $breadOrder->listQueue();
+        break;
+
 }
 

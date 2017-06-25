@@ -2,7 +2,6 @@
 
 // load our environment files - used to store credentials & configuration
 (new Dotenv\Dotenv(__DIR__))->load();
-//FIXME definir outros bancos
 return
     [
         'paths' => [
