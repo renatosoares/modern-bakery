@@ -16,13 +16,8 @@
 
 </nav>
 <header class="bakery-header">
-    <form method="GET">
-        <input value="list bread" type="button"
-               onClick="getNewBreads();" />
-        <input value="mapeia" type="button"
-               onClick="addOnClickHandlers();" />
-
-    </form>
+    <button id="get-new-breads">Listar pães</button>
+    <button id="get-handlers-breads">Mapeia</button>
 </header>
 <main class="bakery-main container-fluid">
     <div class="row">
@@ -35,11 +30,8 @@
             <ul id="select-bread-list">
                 <!--pães selecionados-->
             </ul>
-
-            <form method="get">
-                <input type="button" value="Enviar Paẽs" onclick="sendSelectedBreads()">
-                <input type="button" onclick="removeBreadsList()" value="limpar">
-            </form>
+            <button id="send-breads">Enviar pães</button>
+            <button id="remove-breads-list">Limpar lista de pães</button>
         </aside>
     </div>
     <div class="row">

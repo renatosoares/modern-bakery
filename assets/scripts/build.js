@@ -1,4 +1,16 @@
 var request = null;
+
+var getBreadsBt = document.getElementById("get-new-breads");
+getBreadsBt.addEventListener("click", getNewBreads);
+var getHandlersBt = document.getElementById("get-handlers-breads");
+getHandlersBt.addEventListener("click", addOnClickHandlers);
+var sendBreadsBt = document.getElementById("send-breads");
+sendBreadsBt.addEventListener("click", sendSelectedBreads);
+var removeBreadListBt = document.getElementById("remove-breads-list");
+removeBreadListBt.addEventListener("click", removeBreadsList);
+
+
+
 try {
     request = new XMLHttpRequest();
 } catch (trymicrosoft) {
@@ -79,7 +91,6 @@ function sendSelectedBreads() {
     var url = "/middleware/sendqueue";
     request.open("POST", url, true);
     request.onreadystatechange = showConfirmationQueue;
-    // informa ao servidor que os dados estão codificados
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("breadSendValue=" + encodeURI(breadSendValue));
 }
@@ -116,7 +127,7 @@ function showConfirmationQueue() {
                 var newTextElement = document.createTextNode(textNodeLi);
                 newElementLi.appendChild(newTextElement);
                 breadQueueElement.appendChild(newElementLi);
-            } 
+            }
         } else {
             var message = request.getResponseHeader("Status");
             if ((message == null) || (message.length <= 0)) {
@@ -127,3 +138,7 @@ function showConfirmationQueue() {
         }
     }
 }
+
+// FIXME adicionar typescript para melhorar organização do código
+// FIXME fazer a listagem dos pães disponíveis
+// FIXME fazer listagem dos pães entregues
