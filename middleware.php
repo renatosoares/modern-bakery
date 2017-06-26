@@ -27,6 +27,10 @@ switch ($_GET['actionbakery']){
         $breadOrder->createOrder($breadSendValue, true);
         echo $breadOrder->listQueue();
         break;
+    case "listqueue":
+        $breadOrder = new OrderController();
+        echo $breadOrder->listQueue();
+        break;
 
 }
 

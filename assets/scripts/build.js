@@ -9,6 +9,8 @@ sendBreadsBt.addEventListener("click", sendSelectedBreads);
 var removeBreadListBt = document.getElementById("remove-breads-list");
 removeBreadListBt.addEventListener("click", removeBreadsList);
 
+var listBreadsQueueBt = document.getElementById("list-breads-queue");
+listBreadsQueueBt.addEventListener("click", getlistBreadsQueue);
 
 
 try {
@@ -121,11 +123,17 @@ function showConfirmationQueue() {
             removeBreadsListSelected(breadQueueElement);
 
             for(var i = 0; i < jsonData.length; i++){
-                var textNodeLi = jsonData[i].id + " - " + jsonData[i].product;
+                var newElementBt = document.createElement("button");
+                newElementBt.id = "bread"+ jsonData[i].id;
+                var newTextElementBt = document.createTextNode("Disponível");
+                newElementBt.appendChild(newTextElementBt);
+
+                var textNodeLi = " " + jsonData[i].id + " - " + jsonData[i].product;
                 var newElementLi = document.createElement("li");
                 newElementLi.className = "col-sm-12";
                 var newTextElement = document.createTextNode(textNodeLi);
                 newElementLi.appendChild(newTextElement);
+                newElementLi.insertBefore(newElementBt, newTextElement);
                 breadQueueElement.appendChild(newElementLi);
             }
         } else {
@@ -137,6 +145,13 @@ function showConfirmationQueue() {
             }
         }
     }
+}
+
+function getlistBreadsQueue(){
+    var url = "/middleware/listqueue";
+    request.open("GET", url, true);
+    request.onreadystatechange = showConfirmationQueue;
+    request.send(null);
 }
 
 // FIXME adicionar typescript para melhorar organização do código
