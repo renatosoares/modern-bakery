@@ -85,35 +85,34 @@ function sendSelectedBreads() {
     request.send("breadSendValue=" + encodeURI(breadSendValue));
 }
 
+function removeBreadsList(){
+    var breadList = document.getElementById("bread-list");
+    var selectBreadList = document.getElementById("select-bread-list");
+    for(var i = breadList.children.length; i > 0; i--){
+        breadList.removeChild(breadList.children[0]);
+    }
+    for(var i = selectBreadList.children.length; i > 0; i--){
+        selectBreadList.removeChild(selectBreadList.children[0]);
+    }
+}
+
+
 function showConfirmationQueue() {
     if (request.readyState == 4) {
         if (request.status == 200) {
-            // var response = request.responseText;
-            // // localizar o formulário na página
-            // var mainDiv = document.getElementById("main-page");
-            // var orderForm = document.getElementById("order-form");
-            //
-            // // Criar um texto de confirmação
-            // pElement = document.createElement("p");
-            // textNode = document.createTextNode("Your order should arrive within " +
-            //     response + " minutes. Enjoy your pizza!");
-            // pElement.appendChild(textNode);
-            //
-            // // substituir o formulário com a confirmação
-            // mainDiv.replaceChild(pElement, orderForm);
 
+            removeBreadsList();
             var jsonData = JSON.parse(request.responseText);
             var breadQueueElement = document.getElementById("bread-queue");
 
             for(var i = 0; i < jsonData.length; i++){
-                var textNodeLi = jsonData[i].product;
+                var textNodeLi = jsonData[i].id + " - " + jsonData[i].product;
                 var newElementLi = document.createElement("li");
                 newElementLi.className = "col-sm-12";
                 var newTextElement = document.createTextNode(textNodeLi);
                 newElementLi.appendChild(newTextElement);
                 breadQueueElement.appendChild(newElementLi);
-            } // FIXME reordenar lista em um novo envio
-            // FIXME apagar selecionados envidados e listar novamente os pães
+            } // FIXME reordenar fila em um novo envio
         } else {
             var message = request.getResponseHeader("Status");
             if ((message == null) || (message.length <= 0)) {
