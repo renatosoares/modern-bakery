@@ -74,7 +74,6 @@ function getSelectedBreads() {
     }
     return breadSend;
 }
-
 function sendSelectedBreads() {
     var breadSendValue = getSelectedBreads();
     var url = "/middleware/sendqueue";
@@ -84,7 +83,6 @@ function sendSelectedBreads() {
     request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     request.send("breadSendValue=" + encodeURI(breadSendValue));
 }
-
 function removeBreadsList(){
     var breadList = document.getElementById("bread-list");
     var selectBreadList = document.getElementById("select-bread-list");
@@ -95,8 +93,13 @@ function removeBreadsList(){
         selectBreadList.removeChild(selectBreadList.children[0]);
     }
 }
-
-
+function removeBreadsListSelected(breadElementNode){
+    if(breadElementNode.hasChildNodes()){
+        for(var i = breadElementNode.children.length; i > 0; i--){
+            breadElementNode.removeChild(breadElementNode.children[0]);
+        }
+    }
+}
 function showConfirmationQueue() {
     if (request.readyState == 4) {
         if (request.status == 200) {
@@ -104,6 +107,7 @@ function showConfirmationQueue() {
             removeBreadsList();
             var jsonData = JSON.parse(request.responseText);
             var breadQueueElement = document.getElementById("bread-queue");
+            removeBreadsListSelected(breadQueueElement);
 
             for(var i = 0; i < jsonData.length; i++){
                 var textNodeLi = jsonData[i].id + " - " + jsonData[i].product;
@@ -112,7 +116,7 @@ function showConfirmationQueue() {
                 var newTextElement = document.createTextNode(textNodeLi);
                 newElementLi.appendChild(newTextElement);
                 breadQueueElement.appendChild(newElementLi);
-            } // FIXME reordenar fila em um novo envio
+            } 
         } else {
             var message = request.getResponseHeader("Status");
             if ((message == null) || (message.length <= 0)) {
