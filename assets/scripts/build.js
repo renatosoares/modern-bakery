@@ -8,10 +8,8 @@ var sendBreadsBt = document.getElementById("send-breads");
 sendBreadsBt.addEventListener("click", sendSelectedBreads);
 var removeBreadListBt = document.getElementById("remove-breads-list");
 removeBreadListBt.addEventListener("click", removeBreadsList);
-
 var listBreadsQueueBt = document.getElementById("list-breads-queue");
 listBreadsQueueBt.addEventListener("click", getlistBreadsQueue);
-
 
 try {
     request = new XMLHttpRequest();
@@ -113,28 +111,35 @@ function removeBreadsListSelected(breadElementNode){
         }
     }
 }
+function createNodeBreads(orderId, orderProduct, parentElement) {
+    var textNodeLi = " " + orderId + " - " + orderProduct;
+    var newElementLi = document.createElement("li");
+    var newTextElement = document.createTextNode(textNodeLi);
+    newElementLi.className = "col-sm-12";
+    newElementLi.id = "bread" + orderId;
+    newElementLi.appendChild(newTextElement);
+    newElementLi.onclick = updateBreadsQueue;
+    parentElement.appendChild(newElementLi);
+}
 function showConfirmationQueue() {
     if (request.readyState == 4) {
         if (request.status == 200) {
-
             removeBreadsList();
             var jsonData = JSON.parse(request.responseText);
             var breadQueueElement = document.getElementById("bread-queue");
+            var breadAvailableElement = document.getElementById("bread-available");
+            var breadDeliveredElement = document.getElementById("bread-delivered");
             removeBreadsListSelected(breadQueueElement);
+            removeBreadsListSelected(breadAvailableElement);
+            removeBreadsListSelected(breadDeliveredElement);
 
             for(var i = 0; i < jsonData.length; i++){
-                var newElementBt = document.createElement("button");
-                newElementBt.id = "bread"+ jsonData[i].id;
-                var newTextElementBt = document.createTextNode("Disponível");
-                newElementBt.appendChild(newTextElementBt);
-
-                var textNodeLi = " " + jsonData[i].id + " - " + jsonData[i].product;
-                var newElementLi = document.createElement("li");
-                newElementLi.className = "col-sm-12";
-                var newTextElement = document.createTextNode(textNodeLi);
-                newElementLi.appendChild(newTextElement);
-                newElementLi.insertBefore(newElementBt, newTextElement);
-                breadQueueElement.appendChild(newElementLi);
+                if (jsonData[i].queue == true)
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement);
+                else if (jsonData[i].available == true)
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement);
+                else if( jsonData[i].delivered == true)
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement);
             }
         } else {
             var message = request.getResponseHeader("Status");
@@ -152,6 +157,16 @@ function getlistBreadsQueue(){
     request.open("GET", url, true);
     request.onreadystatechange = showConfirmationQueue;
     request.send(null);
+}
+
+function updateBreadsQueue(){ // FIXME transformar em uma requisição post
+    var idOrder = this;
+    var id = idOrder.id.substr(5,2);
+    var url = "/middleware/updatetodelivered";
+    request.open("POST", url, true);
+    request.onreadystatechange = showConfirmationQueue;
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.send("id=" + encodeURI(id));
 }
 
 // FIXME adicionar typescript para melhorar organização do código

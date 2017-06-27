@@ -24,11 +24,16 @@ switch ($_GET['actionbakery']){
     case "sendqueue":
         $breadSendValue = $_REQUEST["breadSendValue"];
         $breadOrder = new OrderController();
-        $breadOrder->createOrder($breadSendValue, true);
+        $breadOrder->store($breadSendValue, true);
         echo $breadOrder->listQueue();
         break;
     case "listqueue":
         $breadOrder = new OrderController();
+        echo $breadOrder->listQueue();
+        break;
+    case "updatetodelivered":
+        $breadOrder = new OrderController();
+        $breadOrder->update(["queue" => false, "available" => true, "delivered" => false], $_REQUEST["id"]);
         echo $breadOrder->listQueue();
         break;
 
