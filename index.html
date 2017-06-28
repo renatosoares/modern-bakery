@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!--<link rel="stylesheet" href="/assets/bower_components/normalize-css/normalize.css">-->
-    <!--<link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">-->
-    <!--<link rel="stylesheet" href="/assets/bower_components/font-awesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="/assets/bower_components/normalize-css/normalize.css">
+    <link rel="stylesheet" href="/assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/bower_components/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="/assets/dist/css/build.min.css">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,44 +15,47 @@
 <nav class="bakery-nav">
 
 </nav>
-<header class="bakery-header">
-    <button id="get-new-breads">Listar pães</button>
-    <button id="get-handlers-breads">Mapeia</button>
-    <button id="remove-breads-list">Limpar lista de pães</button>
+<header class="bakery-header container">
+    <div class="row">
+        <button id="get-new-breads" class="col-sm-4 btn btn-primary">Listar pães</button>
+        <button id="get-handlers-breads" class="col-sm-4 btn btn-success">Mapeia</button>
+        <button id="remove-breads-list" class="col-sm-4 btn btn-danger">Limpar lista de pães</button>
+    </div>
 
 </header>
-<main class="bakery-main container-fluid">
-    <div class="row">
-        <div class="bread-choice col-8">
-            <h3>Paẽs disponíveis</h3>
+<main class="bakery-main container">
+    <div class="row listing-breads">
+        <div class="bread-choice col-sm-8">
+            <h3>Pães disponíveis</h3>
             <ul class="row" id="bread-list">
                 <!-- listagem de pães-->
             </ul>
         </div>
-        <aside class="side-review col-4" >
+        <aside class="side-review col-sm-4" >
             <h3>Pães selecionados</h3>
-            <ul id="select-bread-list">
+            <ul id="select-bread-list" class="row">
                 <!--pães selecionados-->
             </ul>
-            <button id="send-breads">Enviar pães pré-selecionados</button>
-            <button id="list-breads-queue">Listar paẽs na Fila</button>
+            <button class="btn btn-info col-sm-12" id="send-breads" >Enviar pré-selecionados</button>
+
         </aside>
     </div>
-    <div class="row">
+    <button class="btn btn-warning col-sm-12" id="list-breads-queue">Listar pães na Fila</button>
+    <div>
         <h3>Fila de processo</h3>
-        <ul id="bread-queue">
+        <ul id="bread-queue" class="row list-group">
 
         </ul>
     </div>
-    <div class="row">
+    <div>
         <h3>Disponível</h3>
-        <ul id="bread-available">
+        <ul id="bread-available" class="row list-group">
 
         </ul>
     </div>
-    <div class="row">
+    <div>
         <h3>Entregue</h3>
-        <ul id="bread-delivered">
+        <ul id="bread-delivered" class="row list-group">
 
         </ul>
     </div>
@@ -63,9 +66,9 @@
 
 
 
-<!--<script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>-->
-<!--<script src="/assets/bower_components/tether/dist/js/tether.min.js"></script>-->
-<!--<script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<script src="/assets/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="/assets/bower_components/tether/dist/js/tether.min.js"></script>
+<script src="/assets/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="/assets/dist/js/build.min.js"></script>
 </body>
 </html>

@@ -44,7 +44,7 @@ function updatePage() {
             for(var i = 0; i < jsonData.length; i++){
                 var textNodeLi = jsonData[i].bread;
                 var newElementLi = document.createElement("li");
-                newElementLi.className = "col-3";
+                newElementLi.className = "col-sm-4 btn btn-outline-info";
                 var newTextElement = document.createTextNode(textNodeLi);
                 newElementLi.appendChild(newTextElement);
                 breadListElement.appendChild(newElementLi);
@@ -71,6 +71,7 @@ function addOnClickHandlers() {
 function addToPreview() {
     var liElement = this;
     var selectBreadListElement = document.getElementById("select-bread-list");
+    liElement.className = "col-sm-12 btn btn-outline-warning"
     selectBreadListElement.appendChild(liElement);
     liElement.onclick = null;
 }
@@ -111,11 +112,11 @@ function removeBreadsListSelected(breadElementNode){
         }
     }
 }
-function createNodeBreads(orderId, orderProduct, parentElement, functionSendRequest) {
+function createNodeBreads(orderId, orderProduct, parentElement, functionSendRequest, listGroup) {
     var textNodeLi = " " + orderId + " - " + orderProduct;
     var newElementLi = document.createElement("li");
     var newTextElement = document.createTextNode(textNodeLi);
-    newElementLi.className = "col-sm-12";
+    newElementLi.className = "col-sm-12 "+listGroup;
     newElementLi.id = "bread" + orderId;
     newElementLi.appendChild(newTextElement);
     newElementLi.addEventListener("click", function (e){
@@ -137,11 +138,11 @@ function showConfirmationQueue() {
 
             for(var i = 0; i < jsonData.length; i++){
                 if (jsonData[i].queue == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement, "update-to-available");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement, "update-to-available", "list-group-item list-group-item-info ");
                 else if (jsonData[i].available == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement, "update-to-delivered");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement, "update-to-delivered", "list-group-item list-group-item-success");
                 else if( jsonData[i].delivered == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement, "destroy-order");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement, "destroy-order","list-group-item list-group-item-warning");
             }
         } else {
             var message = request.getResponseHeader("Status");
@@ -171,5 +172,4 @@ function updateBreadsOrder(urlUpdate, idElement){
         request.send("id=" + encodeURI(id));
     }
 }
-
 // FIXME adicionar typescript para melhorar organização do código
