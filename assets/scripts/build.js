@@ -111,14 +111,16 @@ function removeBreadsListSelected(breadElementNode){
         }
     }
 }
-function createNodeBreads(orderId, orderProduct, parentElement) {
+function createNodeBreads(orderId, orderProduct, parentElement, functionSendRequest) {
     var textNodeLi = " " + orderId + " - " + orderProduct;
     var newElementLi = document.createElement("li");
     var newTextElement = document.createTextNode(textNodeLi);
     newElementLi.className = "col-sm-12";
     newElementLi.id = "bread" + orderId;
     newElementLi.appendChild(newTextElement);
-    newElementLi.onclick = updateBreadsQueue;
+    newElementLi.addEventListener("click", function (e){
+        updateBreadsOrder(functionSendRequest, e.currentTarget.id );
+    });
     parentElement.appendChild(newElementLi);
 }
 function showConfirmationQueue() {
@@ -135,11 +137,11 @@ function showConfirmationQueue() {
 
             for(var i = 0; i < jsonData.length; i++){
                 if (jsonData[i].queue == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement);
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement, "update-to-available");
                 else if (jsonData[i].available == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement);
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement, "update-to-delivered");
                 else if( jsonData[i].delivered == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement);
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement, "destroy-order");
             }
         } else {
             var message = request.getResponseHeader("Status");
@@ -159,16 +161,19 @@ function getlistBreadsQueue(){
     request.send(null);
 }
 
-function updateBreadsQueue(){ // FIXME transformar em uma requisição post
-    var idOrder = this;
-    var id = idOrder.id.substr(5,2);
-    var url = "/middleware/updatetodelivered";
-    request.open("POST", url, true);
-    request.onreadystatechange = showConfirmationQueue;
-    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-    request.send("id=" + encodeURI(id));
+function updateBreadsOrder(urlUpdate, idElement){
+    if (typeof idElement != 'undefined'){
+        var id = idElement.substr(5,2);
+        var url = "/middleware/" + urlUpdate;
+        request.open("POST", url, true);
+        request.onreadystatechange = showConfirmationQueue;
+        request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        request.send("id=" + encodeURI(id));
+    }
+}
+function destroyBreadOrder(teste) {
+        console.log(teste);
 }
 
 // FIXME adicionar typescript para melhorar organização do código
-// FIXME fazer a listagem dos pães disponíveis
 // FIXME fazer listagem dos pães entregues

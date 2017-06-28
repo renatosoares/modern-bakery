@@ -31,9 +31,19 @@ switch ($_GET['actionbakery']){
         $breadOrder = new OrderController();
         echo $breadOrder->listQueue();
         break;
-    case "updatetodelivered":
+    case "update-to-available":
         $breadOrder = new OrderController();
         $breadOrder->update(["queue" => false, "available" => true, "delivered" => false], $_REQUEST["id"]);
+        echo $breadOrder->listQueue();
+        break;
+    case "update-to-delivered":
+        $breadOrder = new OrderController();
+        $breadOrder->update(["queue" => false, "available" => false, "delivered" => true], $_REQUEST["id"]);
+        echo $breadOrder->listQueue();
+        break;
+    case "destroy-bread":
+        $breadOrder = new OrderController();
+        $breadOrder->destroy();
         echo $breadOrder->listQueue();
         break;
 
