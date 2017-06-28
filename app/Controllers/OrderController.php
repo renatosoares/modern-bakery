@@ -21,7 +21,7 @@ class OrderController
         $update->delivered = $request["delivered"];
         $update->save();
     }
-    public function destroy(){
-        
+    public function destroy($id){
+        Order::destroy($id);
     }
 }

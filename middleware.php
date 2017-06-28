@@ -41,9 +41,9 @@ switch ($_GET['actionbakery']){
         $breadOrder->update(["queue" => false, "available" => false, "delivered" => true], $_REQUEST["id"]);
         echo $breadOrder->listQueue();
         break;
-    case "destroy-bread":
+    case "destroy-order":
         $breadOrder = new OrderController();
-        $breadOrder->destroy();
+        $breadOrder->destroy($_REQUEST["id"]);
         echo $breadOrder->listQueue();
         break;
 

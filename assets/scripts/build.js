@@ -171,9 +171,5 @@ function updateBreadsOrder(urlUpdate, idElement){
         request.send("id=" + encodeURI(id));
     }
 }
-function destroyBreadOrder(teste) {
-        console.log(teste);
-}
 
 // FIXME adicionar typescript para melhorar organização do código
-// FIXME fazer listagem dos pães entregues
