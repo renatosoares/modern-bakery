@@ -15,7 +15,7 @@
 <nav class="bakery-nav">
 
 </nav>
-<header class="bakery-header container">
+<header class="bakery-header container mt-5">
     <div class="row">
         <button id="get-new-breads" class="col-sm-4 btn btn-primary">Listar pães</button>
         <button id="get-handlers-breads" class="col-sm-4 btn btn-success">Mapeia</button>
@@ -23,17 +23,17 @@
     </div>
 
 </header>
-<main class="bakery-main container">
-    <div class="row listing-breads">
+<main class="bakery-main container mb-5 mt-3">
+    <div class="row listing-breads mb-5">
         <div class="bread-choice col-sm-8">
             <h3>Pães disponíveis</h3>
-            <ul class="row" id="bread-list">
+            <ul class="row p-0 m-3" id="bread-list">
                 <!-- listagem de pães-->
             </ul>
         </div>
         <aside class="side-review col-sm-4" >
             <h3>Pães selecionados</h3>
-            <ul id="select-bread-list" class="row">
+            <ul id="select-bread-list" class="row p-0 m-4">
                 <!--pães selecionados-->
             </ul>
             <button class="btn btn-info col-sm-12" id="send-breads" >Enviar pré-selecionados</button>
@@ -41,19 +41,19 @@
         </aside>
     </div>
     <button class="btn btn-warning col-sm-12" id="list-breads-queue">Listar pães na Fila</button>
-    <div>
+    <div class="mt-3">
         <h3>Fila de processo</h3>
         <ul id="bread-queue" class="row list-group">
 
         </ul>
     </div>
-    <div>
+    <div class="mt-3">
         <h3>Disponível</h3>
         <ul id="bread-available" class="row list-group">
 
         </ul>
     </div>
-    <div>
+    <div class="mt-3">
         <h3>Entregue</h3>
         <ul id="bread-delivered" class="row list-group">
 

@@ -138,11 +138,11 @@ function showConfirmationQueue() {
 
             for(var i = 0; i < jsonData.length; i++){
                 if (jsonData[i].queue == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement, "update-to-available", "list-group-item list-group-item-info ");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadQueueElement, "update-to-available", "list-group-item list-group-item-action list-group-item-info ");
                 else if (jsonData[i].available == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement, "update-to-delivered", "list-group-item list-group-item-success");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadAvailableElement, "update-to-delivered", "list-group-item list-group-item-action list-group-item-success");
                 else if( jsonData[i].delivered == true)
-                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement, "destroy-order","list-group-item list-group-item-warning");
+                    createNodeBreads(jsonData[i].id, jsonData[i].product, breadDeliveredElement, "destroy-order","list-group-item list-group-item-action list-group-item-warning");
             }
         } else {
             var message = request.getResponseHeader("Status");
